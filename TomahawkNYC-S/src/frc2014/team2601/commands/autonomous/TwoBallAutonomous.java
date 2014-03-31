@@ -60,7 +60,7 @@ public class TwoBallAutonomous extends CommandGroup{
             addSequential(new MoveForward(0.45));
             addParallel(new Fire());
             addSequential(new MoveForward(1.48));
-            addSequential(new DoNothing(0.5));
+            addSequential(new MoveArmUpTimed(0.6));
             addParallel(new Open());
             addSequential(new DoNothing(1.0));
             addSequential(new Fire());
