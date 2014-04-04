@@ -14,14 +14,12 @@ import frc2014.team2601.subsystems.Vision;
  */
 public class MoveToPosition extends CommandBase {
     
-    double position = 150;
     double timeout = .15;
     
-    public MoveToPosition(double position) {
+    public MoveToPosition() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(vision);
-        //this.position = position;
         setTimeout(timeout);
     }
 
@@ -32,7 +30,7 @@ public class MoveToPosition extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //vision.setPosition(position);
-        vision.moveToPosition(position);
+        vision.moveToPosition(vision.getHotPosition());
     }
 
     // Make this return true when this Command no longer needs to run execute()

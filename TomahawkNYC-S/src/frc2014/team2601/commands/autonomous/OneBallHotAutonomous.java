@@ -21,7 +21,7 @@ import frc2014.team2601.commands.vision.MoveToPosition;
 public class OneBallHotAutonomous extends CommandGroup {
     
     public OneBallHotAutonomous() {
-        addSequential(new MoveToPosition(90));
+        addSequential(new MoveToPosition());
         addSequential(new CheckIfHot(4));
         addParallel(new Open());
         addSequential(new DoNothing(1.0));

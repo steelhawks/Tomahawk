@@ -20,12 +20,14 @@ public class Vision extends Subsystem {
 
     private final Servo tilt;
     private final Relay light;
-    private double hot, initial, position, interval;
+    private double hot, initial, interval;
     
     public Vision(){
         tilt = new Servo(Map.SERVO);
         light = new Relay(Map.CAMERA_LIGHT_RELAY);
-        setConfiguration();
+        hot = 150; //0.0;
+        interval = 2.5;
+        initial = tilt.getAngle(); //104.8936170212766;
     }
     
     public void initDefaultCommand() {
@@ -63,17 +65,10 @@ public class Vision extends Subsystem {
     }
     
     public void moveToPosition(double angle){
-        tilt.setAngle(150);
+        tilt.setAngle(hot);
     }
     
-    public void setPosition(double angle){
-        this.position = angle;
-    }
-    
-    public void setConfiguration(){
-        //hot = 0.0;
-        hot = 90.0;
-        initial = 90;//104.8936170212766;
-        interval = 2.5;
+    public double getHotPosition(){
+        return hot;
     }
 }

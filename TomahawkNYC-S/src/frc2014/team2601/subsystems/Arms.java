@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc2014.team2601.Map;
 import frc2014.team2601.commands.collecting.OperateWithJoystick;
@@ -23,13 +24,16 @@ public class Arms extends Subsystem {
     private Value solenoidClose, solenoidOpen;
     private final Talon arm;
     private final DoubleSolenoid solenoid;
+    public final Ultrasonic sonar;
     private double speed;
 
     public Arms(){
         setConfiguration();
         arm = new Talon(Map.ARM_MOTOR);
         solenoid = new DoubleSolenoid(Map.ARM_OPEN, Map.ARM_CLOSE);
-        speed = 1.0;
+        sonar = new Ultrasonic(Map.ARM_SONAR_INPUT, Map.ARM_SONAR_OUTPUT);
+        sonar.setEnabled(true);
+        sonar.setAutomaticMode(true);
     }
     
     public void initDefaultCommand() {
@@ -62,7 +66,12 @@ public class Arms extends Subsystem {
         arm.stopMotor();
     }
     
+    public double getDistanceToBall(){
+        return sonar.getRangeInches();
+    }
+    
     public void setConfiguration(){
+        speed = 1.0;
         solenoidClose = DoubleSolenoid.Value.kReverse;
         solenoidOpen = DoubleSolenoid.Value.kForward;
     }
