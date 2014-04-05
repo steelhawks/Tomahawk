@@ -63,7 +63,7 @@ public class Tomahawk extends IterativeRobot {
         // Initialize all subsystems
         CommandBase.init();
         compressor = new Compressor(Map.PRESSURE_SWITCH, Map.COMPRESSOR_RELAY);
-        //compressor.start();
+        compressor.start();
         new ResetLauncher().start();
     }
 
@@ -86,8 +86,7 @@ public class Tomahawk extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        //CommandBase.drivetrain.resetGyro();
-        //autonomousCommand.cancel();
+        autonomousCommand.cancel();
     }
 
     /**

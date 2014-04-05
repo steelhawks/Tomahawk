@@ -12,7 +12,7 @@ import frc2014.team2601.commands.collecting.Close;
 import frc2014.team2601.commands.collecting.MoveArmDownTimed;
 import frc2014.team2601.commands.collecting.MoveArmUpTimed;
 import frc2014.team2601.commands.collecting.Open;
-import frc2014.team2601.commands.driving.MoveForwardRated;
+import frc2014.team2601.commands.driving.MoveForward;
 import frc2014.team2601.commands.launching.Fire;
 
 /**
@@ -43,14 +43,28 @@ public class TwoBallAutonomous extends CommandGroup{
 //        addSequential(new DoNothing(1.25));
 //        addSequential(new Fire());
         
-          addParallel(new Open());
-          addSequential(new MoveArmDownTimed(0.8));
-          addSequential(new Close());
-          addSequential(new MoveForwardRated(0.4, speed));
-          addSequential(new Fire());
-          addSequential(new MoveArmUpTimed(0.9));
-          addSequential(new Open());
-          addSequential(new Fire());
+//          addParallel(new Open());
+//          addSequential(new MoveArmDownTimed(0.8));
+//          addSequential(new Close());
+//          addSequential(new MoveForwardRated(0.4, speed));
+//          addSequential(new Fire());
+//          addSequential(new MoveArmUpTimed(0.9));
+//          addSequential(new Open());
+//          addSequential(new Fire());
+
+            //Version 3 (or something...)
+            addSequential(new Open());
+            addSequential(new MoveArmDownTimed(0.8));
+            addSequential(new Close());
+            addSequential(new MoveArmUpTimed(0.2));
+            addSequential(new MoveForward(0.45));
+            addParallel(new Fire(false));
+            addSequential(new MoveForward(1.48));
+            addSequential(new MoveArmUpTimed(0.6));
+            addParallel(new Open());
+            addSequential(new DoNothing(1.0));
+            addSequential(new Fire());
+            
     }
     
 }

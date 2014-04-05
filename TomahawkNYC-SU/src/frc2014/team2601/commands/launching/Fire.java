@@ -13,12 +13,19 @@ import frc2014.team2601.commands.CommandBase;
 public class Fire extends CommandBase {
     
     private double timeout = 1.00;
+    private boolean openArms = true;
     
     public Fire() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(launcher);
         setTimeout(timeout);
+    }
+    
+    public Fire(boolean openArms) {
+        requires(launcher);
+        setTimeout(timeout);
+        this.openArms = openArms;
     }
 
     // Called just before this Command runs the first time
@@ -28,7 +35,7 @@ public class Fire extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        arms.openArm();
+        if (openArms) arms.openArm();
         launcher.fire();
     }
 

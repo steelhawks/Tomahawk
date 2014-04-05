@@ -22,6 +22,7 @@ public class Lights extends Subsystem {
     private Relay red, blue;
     private boolean isRed, isBlue;
     private Relay.Value on, off; 
+    private double toggleDelay;
     
     public Lights(){
         red = new Relay(Map.RED_LIGHT_RELAY);
@@ -83,5 +84,11 @@ public class Lights extends Subsystem {
         isBlue = false;
         on = Relay.Value.kForward;
         off = Relay.Value.kOff;
+        toggleDelay = 50; //milliseconds
+    }
+    
+    public void toggle(double startingTime){
+        if(System.currentTimeMillis()<=startingTime+toggleDelay) setRed();
+        setBlue();
     }
 }

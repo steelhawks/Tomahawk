@@ -2,11 +2,39 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="NYC">
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/subsystems/Launcher.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/subsystems/HotGoalVision.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/collecting/DetectBall.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/autonomous/TwoBallAutonomous.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/OI.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/collecting/MoveArmUpTimed.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/autonomous/OneBallAutonomous.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/subsystems/Arms.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/Map.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/collecting/IntakeAutomatically.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/autonomous/MoveForwardAutonomous.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/subsystems/Drivetrain.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/autonomous/OneBallHotAutonomous.java</file>
+            <file>file:/C:/Users/steelhawks/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/collecting/Close.java</file>
+        </group>
         <group name="FRC2014">
-            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-SU/src/frc2014/team2601/subsystems/Launcher.java</file>
-            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-SU/src/frc2014/team2601/subsystems/Drivetrain.java</file>
-            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-SU/src/frc2014/team2601/subsystems/Arms.java</file>
-            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-SU/src/frc2014/team2601/OI.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/OI.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/driving/ArcadeDrive.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/Map.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/autonomous/TwoBallAutonomous.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/launching/ResetLauncher.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/subsystems/Vision.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/subsystems/Arms.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/collecting/DetectBall.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/Tomahawk.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/autonomous/OneBallHotAutonomous.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/driving/MoveForward.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/commands/vision/MoveToPosition.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/subsystems/Drivetrain.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/subsystems/HotGoalVision.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/subsystems/Lights.java</file>
+            <file>file:/C:/Users/Neil/Documents/NetBeansProjects/FRC2014/TomahawkNYC-S/src/frc2014/team2601/subsystems/Launcher.java</file>
         </group>
     </open-files>
 </project-private>

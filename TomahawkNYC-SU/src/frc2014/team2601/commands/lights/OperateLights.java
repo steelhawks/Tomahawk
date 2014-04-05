@@ -25,6 +25,8 @@ public class OperateLights extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        if(drivetrain.getInRange()) lights.setBlue();
+        else lights.setRed();
         /*
         if(launcher.getFired()){
             lights.setOppositeColor();
@@ -33,7 +35,7 @@ public class OperateLights extends CommandBase {
             lights.setAllianceColor();
         }
         */
-        lights.setBlue();
+        //lights.setBlue();
     }
 
     // Make this return true when this Command no longer needs to run execute()

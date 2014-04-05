@@ -13,6 +13,9 @@ import frc2014.team2601.commands.CommandBase;
  */
 public class ArcadeDrive extends CommandBase {
     
+    private final double closeRangeThreshold = 90; //inches
+    private final double longRangeThreshold = 110; //inches
+    
     public ArcadeDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -26,6 +29,10 @@ public class ArcadeDrive extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         drivetrain.arcadeDrive(oi.getPrimaryController(), false);
+        if(drivetrain.getDistanceFromWall()>=closeRangeThreshold && drivetrain.getDistanceFromWall()<=longRangeThreshold){
+            drivetrain.setInRange(true);
+        }
+        else drivetrain.setInRange(false);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -24,12 +24,16 @@ public class Arms extends Subsystem {
     private Value solenoidClose, solenoidOpen;
     private final Talon arm;
     private final DoubleSolenoid solenoid;
+    public final Ultrasonic sonar;
     private double speed;
 
     public Arms(){
         setConfiguration();
         arm = new Talon(Map.ARM_MOTOR);
         solenoid = new DoubleSolenoid(Map.ARM_OPEN, Map.ARM_CLOSE);
+        sonar = new Ultrasonic(Map.ARM_SONAR_INPUT, Map.ARM_SONAR_OUTPUT);
+        sonar.setEnabled(true);
+        sonar.setAutomaticMode(true);
     }
     
     public void initDefaultCommand() {
@@ -60,6 +64,10 @@ public class Arms extends Subsystem {
     
     public void stopArm(){
         arm.stopMotor();
+    }
+    
+    public double getDistanceToBall(){
+        return sonar.getRangeInches();
     }
     
     public void setConfiguration(){

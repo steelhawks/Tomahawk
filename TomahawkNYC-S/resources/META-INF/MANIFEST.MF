@@ -1,6 +1,0 @@
-MIDlet-Name: Tomahawk
-MIDlet-Version: 1.0.0
-MIDlet-Vendor: FIRST
-MIDlet-1: Tomahawk, , frc2014.team2601.Tomahawk
-MicroEdition-Profile: IMP-1.0
-MicroEdition-Configuration: CLDC-1.1

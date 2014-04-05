@@ -14,10 +14,9 @@ import frc2014.team2601.subsystems.Vision;
  */
 public class MoveToPosition extends CommandBase {
     
-    double position = 150;
     double timeout = .15;
     
-    public MoveToPosition(double position) {
+    public MoveToPosition() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(vision);

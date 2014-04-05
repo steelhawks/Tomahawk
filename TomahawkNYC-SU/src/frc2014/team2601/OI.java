@@ -5,6 +5,7 @@ package frc2014.team2601;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc2014.team2601.commands.collecting.IntakeAutomatically;
 import frc2014.team2601.commands.collecting.OpenAndClose;
 import frc2014.team2601.commands.launching.DecreaseDelay;
 import frc2014.team2601.commands.launching.Fire;
@@ -56,12 +57,13 @@ public class OI {
     private Joystick thrustmaster;
     private final Button fire; //, reset;
     //private final Button variableFire;
-    private final Button passFire;
+    //private final Button passFire;
     private final Button increaseDelay, decreaseDelay;
     
     //Attack 3
     private Joystick attack3;
     private final Button openAndClose;
+    private final Button intakeAutomatically;
     private final Button resetCamera;
     private final Button setCamera;
     private final Button tiltCameraUp, tiltCameraDown;
@@ -70,13 +72,14 @@ public class OI {
         thrustmaster = new Joystick(Map.JOYSTICK_PORT);
         fire = new JoystickButton(thrustmaster, 1);
         //variableFire = new JoystickButton(thrustmaster, 1);
-        passFire = new JoystickButton(thrustmaster, 3);
+        //passFire = new JoystickButton(thrustmaster, 3);
         increaseDelay = new JoystickButton(thrustmaster, 4);
         decreaseDelay = new JoystickButton(thrustmaster, 5);
         //reset = new JoystickButton(thrustmaster, 2);
         
         attack3 = new Joystick(Map.SECONDARY_JOYSTICK_PORT);
         openAndClose = new JoystickButton(attack3, 1);
+        intakeAutomatically = new JoystickButton(attack3, 6);
         resetCamera = new JoystickButton(attack3, 5);
         setCamera = new JoystickButton(attack3, 4);
         tiltCameraUp = new JoystickButton(attack3, 3);
@@ -97,13 +100,14 @@ public class OI {
         fire.whenPressed(new Fire());
         //variableFire.whenPressed(new VariableFire());
         //reset.whenPressed(new ResetLauncher());
-        passFire.whenPressed(new PassFire());
+        //passFire.whenPressed(new PassFire());
         increaseDelay.whileHeld(new IncreaseDelay());
         decreaseDelay.whileHeld(new DecreaseDelay());
         
         //Secondary Controller
         openAndClose.whenPressed(new OpenAndClose());
-        setCamera.whenPressed(new MoveToPosition(150));
+        intakeAutomatically.whileHeld(new IntakeAutomatically());
+        setCamera.whenPressed(new MoveToPosition());
         resetCamera.whenPressed(new TiltReset());
         tiltCameraUp.whileHeld(new TiltUp());
         tiltCameraDown.whileHeld(new TiltDown());

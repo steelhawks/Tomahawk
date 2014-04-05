@@ -27,6 +27,8 @@ public class Drivetrain extends Subsystem {
     private double nonRotate, nonDirection;
     private double speed;
     private RobotDrive robotDrive;
+    private final Ultrasonic sonar;
+    private boolean inRange;
     
     public Drivetrain(){
         frontLeft = new Talon(Map.FRONT_LEFT_MOTOR);
@@ -36,6 +38,9 @@ public class Drivetrain extends Subsystem {
         speed = 1.0;
         robotDrive = new RobotDrive(frontLeft, rearLeft, frontRight, rearRight);
         robotDrive.setSafetyEnabled(false);
+        sonar = new Ultrasonic(Map.LAUNCHER_SONAR_INPUT, Map.LAUNCHER_SONAR_OUTPUT);
+        sonar.setEnabled(true);
+        sonar.setAutomaticMode(true);
     }
     
     public void initDefaultCommand() {
@@ -101,11 +106,24 @@ public class Drivetrain extends Subsystem {
         }
     }
     
+    public double getDistanceFromWall(){
+        return sonar.getRangeInches();
+    }
+    
+    public boolean getInRange(){
+        return inRange;
+    }
+    
+    public void setInRange(boolean setting){
+        inRange = setting;
+    }
+    
     public void setSpeed(double speed){
         this.speed = speed;
     }
     
     public void setConfiguration(){
+        inRange = false;
         forwardAngle = 0;
         rightAngle = 90;
         backwardAngle = 180;

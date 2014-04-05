@@ -25,9 +25,9 @@ public class Vision extends Subsystem {
     public Vision(){
         tilt = new Servo(Map.SERVO);
         light = new Relay(Map.CAMERA_LIGHT_RELAY);
-        hot = 150;
+        hot = 150; //0.0;
         interval = 2.5;
-        initial = tilt.getAngle();
+        initial = tilt.getAngle(); //104.8936170212766;
     }
     
     public void initDefaultCommand() {
