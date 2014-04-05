@@ -37,8 +37,8 @@ public class Map {
     public static final int ARM_MOTOR = 5; //Digital Sidecar, PWM
     public static final int ARM_OPEN = 4; //cRIO, Solenoid Breakout
     public static final int ARM_CLOSE = 5; //cRIO, Solenoid Breakout
-    public static final int ARM_SONAR_INPUT = 2; //Digital Sidecar, DIO
-    public static final int ARM_SONAR_OUTPUT = 1; //Digital Sidecar, DIO
+    public static final int ARM_SONAR_INPUT = 4; //Digital Sidecar, DIO; Labeled with red electrical tape "Input"
+    public static final int ARM_SONAR_OUTPUT = 3; //Digital Sidecar, DIO
     
     //Launcher
     public static final int LEFT_PISTON_RETRACT = 3; //cRIO, Solenoid Breakout
@@ -47,8 +47,8 @@ public class Map {
     public static final int MIDDLE_PISTON_EXTEND = 6; //cRIO, Solenoid Breakout
     public static final int RIGHT_PISTON_RETRACT = 7; //cRIO, Solenoid Breakout
     public static final int RIGHT_PISTON_EXTEND = 8; //cRIO, Solenoid Breakout
-    public static final int LAUNCHER_SONAR_INPUT = 3; //Digital Sidecar, DIO
-    public static final int LAUNCHER_SONAR_OUTPUT = 4; //Digital Sidecar, DIO
+    public static final int LAUNCHER_SONAR_INPUT = 2; //Digital Sidecar, DIO;
+    public static final int LAUNCHER_SONAR_OUTPUT = 1; //Digital Sidecar, DIO
     public static final int PRESSURE_SWITCH = 14; //Digital Sidecar, DIO
     public static final int COMPRESSOR_RELAY = 2; //Digital Sidecar, Relay
     

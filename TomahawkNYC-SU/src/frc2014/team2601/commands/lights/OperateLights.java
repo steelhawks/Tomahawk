@@ -15,7 +15,6 @@ public class OperateLights extends CommandBase {
     
     public OperateLights() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
         requires(lights);
     }
 
@@ -25,7 +24,7 @@ public class OperateLights extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if(drivetrain.getInRange()) lights.setBlue();
+        if(drivetrain.getInRange()) lights.toggle(System.currentTimeMillis());
         else lights.setRed();
         /*
         if(launcher.getFired()){

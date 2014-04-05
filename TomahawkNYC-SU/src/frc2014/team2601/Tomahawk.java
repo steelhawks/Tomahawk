@@ -17,7 +17,6 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc2014.team2601.commands.CommandBase;
-import frc2014.team2601.commands.autonomous.MoveForwardAutonomous;
 import frc2014.team2601.commands.autonomous.OneBallAutonomous;
 import frc2014.team2601.commands.autonomous.OneBallHotAutonomous;
 import frc2014.team2601.commands.autonomous.OneBallToLowGoalAutonomous;
@@ -37,40 +36,32 @@ public class Tomahawk extends IterativeRobot {
     Command autonomousCommand;
     SendableChooser autoChooser;
     Compressor compressor;
-    NetworkTable table;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-        // instantiate the NetworkTable used for varying autonomous settings
-        table = NetworkTable.getTable("Autonomous Table");
-        
         // instantiate the command used for the autonomous period
         autoChooser = new SendableChooser();
-        autoChooser.addDefault("Move Forward", new MoveForwardAutonomous());
         autoChooser.addDefault("One Ball Hot Autonomous", new OneBallHotAutonomous());
         autoChooser.addObject("One Ball Auton", new OneBallAutonomous());
         autoChooser.addObject("One Ball Auton to Low Goal", new OneBallToLowGoalAutonomous());
         autoChooser.addObject("Two Ball Auton", new TwoBallAutonomous());
         autoChooser.addObject("Three Ball Auton", new ThreeBallAutonomous());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
-//        SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
-//        SmartDashboard.putData("ArcadeDriveSqrt", new ArcadeDriveSqrt());
-//        SmartDashboard.putData("TankDrive", new TankDrive());
 
         // Initialize all subsystems
         CommandBase.init();
         compressor = new Compressor(Map.PRESSURE_SWITCH, Map.COMPRESSOR_RELAY);
         compressor.start();
-        new ResetLauncher().start();
+        //new ResetLauncher().start();
     }
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
         autonomousCommand = (Command) autoChooser.getSelected();
-        CommandBase.vision.target();
+        CommandBase.vision.target(); //is this the correct angle for autonomous? or should it be commented out?
+        CommandBase.vision.turnLightOn();
         autonomousCommand.start();
     }
 
@@ -86,7 +77,7 @@ public class Tomahawk extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        autonomousCommand.cancel();
+        //autonomousCommand.cancel();
     }
 
     /**

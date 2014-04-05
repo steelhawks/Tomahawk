@@ -4,7 +4,6 @@
  */
 package frc2014.team2601.subsystems;
 
-import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
@@ -27,8 +26,9 @@ public class Drivetrain extends Subsystem {
     private double nonRotate, nonDirection;
     private double speed;
     private RobotDrive robotDrive;
-    private final Ultrasonic sonar;
-    private boolean inRange;
+    private Ultrasonic wallSonar, ballSonar;
+    private boolean inRange, hasBall;
+    private double previousBallReading = 0;
     
     public Drivetrain(){
         frontLeft = new Talon(Map.FRONT_LEFT_MOTOR);
@@ -38,9 +38,12 @@ public class Drivetrain extends Subsystem {
         speed = 1.0;
         robotDrive = new RobotDrive(frontLeft, rearLeft, frontRight, rearRight);
         robotDrive.setSafetyEnabled(false);
-        sonar = new Ultrasonic(Map.LAUNCHER_SONAR_INPUT, Map.LAUNCHER_SONAR_OUTPUT);
-        sonar.setEnabled(true);
-        sonar.setAutomaticMode(true);
+        ballSonar = new Ultrasonic(Map.ARM_SONAR_INPUT, Map.ARM_SONAR_OUTPUT);
+        //ballSonar.setEnabled(true);
+        ballSonar.setAutomaticMode(true);
+        wallSonar = new Ultrasonic(Map.LAUNCHER_SONAR_INPUT, Map.LAUNCHER_SONAR_OUTPUT);
+        //wallSonar.setEnabled(true);
+        wallSonar.setAutomaticMode(true);
     }
     
     public void initDefaultCommand() {
@@ -53,21 +56,7 @@ public class Drivetrain extends Subsystem {
         if(hasTwistAxis) robotDrive.arcadeDrive(joystick.getY(), -joystick.getTwist());
         else robotDrive.arcadeDrive(joystick.getY(), -joystick.getX());
     }
-    
-    public void arcadeDriveSqrt(Joystick joystick, boolean hasTwistAxis){
-        if(hasTwistAxis) robotDrive.arcadeDrive(squareRoot(joystick.getY()), squareRoot(-joystick.getTwist()));
-        else robotDrive.arcadeDrive(squareRoot(joystick.getY()), squareRoot(-joystick.getX()));
-    }
-    
-    public double squareRoot(double value){
-        double sign = Math.abs(value)/value;
-        return sign*Math.sqrt(Math.abs(value));
-    }
-    
-    public void tankDrive(Joystick leftStick, Joystick rightStick){
-        robotDrive.tankDrive(leftStick.getY(), rightStick.getY()); 
-    }
-
+   
     public void moveForward(){
         robotDrive.drive(-speed, nonRotate);
     }
@@ -107,15 +96,36 @@ public class Drivetrain extends Subsystem {
     }
     
     public double getDistanceFromWall(){
-        return sonar.getRangeInches();
+        return wallSonar.getRangeInches();
+        //return 0;
+    }
+    
+    public double getDistanceFromBall(){
+        return ballSonar.getRangeInches();
     }
     
     public boolean getInRange(){
         return inRange;
     }
     
+    public double getPreviousBallReading(){
+        return previousBallReading;
+    }
+    
     public void setInRange(boolean setting){
         inRange = setting;
+    }
+    
+    public boolean getHasBall(){
+        return hasBall;
+    }
+    
+    public void setHasBall(boolean setting){
+        hasBall = setting;
+    }
+    
+    public void setPreviousBallReading(double setting){
+        previousBallReading = setting;
     }
     
     public void setSpeed(double speed){
@@ -124,6 +134,7 @@ public class Drivetrain extends Subsystem {
     
     public void setConfiguration(){
         inRange = false;
+        hasBall = false;
         forwardAngle = 0;
         rightAngle = 90;
         backwardAngle = 180;

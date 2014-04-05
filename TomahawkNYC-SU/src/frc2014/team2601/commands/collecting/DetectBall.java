@@ -5,7 +5,6 @@
  */
 package frc2014.team2601.commands.collecting;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc2014.team2601.commands.CommandBase;
 
 /**
@@ -14,28 +13,23 @@ import frc2014.team2601.commands.CommandBase;
  */
 public class DetectBall extends CommandBase {
     
-    private final double closeRangeThreshold = 5.0; //inches
-    private final double longRangeThreshold = 8.0; //inches
-    
     public DetectBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(arms);
+        //requires(arms);
     }
-
+    
     // Called just before this Command runs the first time
     protected void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        SmartDashboard.putNumber("Get Range Inches", arms.sonar.getRangeInches());
-        System.out.println(arms.sonar.getRangeInches());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return arms.getDistanceToBall()>closeRangeThreshold && arms.getDistanceToBall()<longRangeThreshold;
+        return drivetrain.getHasBall();
     }
 
     // Called once after isFinished returns true

@@ -5,12 +5,11 @@ package frc2014.team2601;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc2014.team2601.commands.collecting.IntakeAutomatically;
+import frc2014.team2601.commands.collecting.AutoIntakeBall;
 import frc2014.team2601.commands.collecting.OpenAndClose;
 import frc2014.team2601.commands.launching.DecreaseDelay;
 import frc2014.team2601.commands.launching.Fire;
 import frc2014.team2601.commands.launching.IncreaseDelay;
-import frc2014.team2601.commands.launching.PassFire;
 import frc2014.team2601.commands.vision.MoveToPosition;
 import frc2014.team2601.commands.vision.TiltDown;
 import frc2014.team2601.commands.vision.TiltReset;
@@ -63,10 +62,10 @@ public class OI {
     //Attack 3
     private Joystick attack3;
     private final Button openAndClose;
-    private final Button intakeAutomatically;
     private final Button resetCamera;
     private final Button setCamera;
     private final Button tiltCameraUp, tiltCameraDown;
+    private final Button autoIntake;
     
     public OI(){
         thrustmaster = new Joystick(Map.JOYSTICK_PORT);
@@ -79,11 +78,11 @@ public class OI {
         
         attack3 = new Joystick(Map.SECONDARY_JOYSTICK_PORT);
         openAndClose = new JoystickButton(attack3, 1);
-        intakeAutomatically = new JoystickButton(attack3, 6);
         resetCamera = new JoystickButton(attack3, 5);
         setCamera = new JoystickButton(attack3, 4);
         tiltCameraUp = new JoystickButton(attack3, 3);
         tiltCameraDown = new JoystickButton(attack3, 2);
+        autoIntake = new JoystickButton(attack3, 6);
         setButtons();
     }
     
@@ -106,11 +105,11 @@ public class OI {
         
         //Secondary Controller
         openAndClose.whenPressed(new OpenAndClose());
-        intakeAutomatically.whileHeld(new IntakeAutomatically());
         setCamera.whenPressed(new MoveToPosition());
         resetCamera.whenPressed(new TiltReset());
         tiltCameraUp.whileHeld(new TiltUp());
         tiltCameraDown.whileHeld(new TiltDown());
+        autoIntake.whileHeld(new AutoIntakeBall());
     }
 }
 

@@ -70,8 +70,8 @@ public class Launcher extends Subsystem {
     
     public void setConfiguration(){
         delay = 0.3;
-        retractor = DoubleSolenoid.Value.kReverse; //Forward
-        extender = DoubleSolenoid.Value.kForward; //Reverse
+        retractor = DoubleSolenoid.Value.kForward; 
+        extender = DoubleSolenoid.Value.kReverse; 
     }
     
     public void displayData(){

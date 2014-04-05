@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  * @author steelhawks
  */
-public class IntakeAutomatically extends CommandGroup {
+public class AutoIntakeBall extends CommandGroup {
     
-    public IntakeAutomatically() {
+    public AutoIntakeBall() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -31,6 +31,6 @@ public class IntakeAutomatically extends CommandGroup {
         // arm.
         addSequential(new DetectBall());
         addSequential(new Close());
-        addSequential(new MoveArmUpTimed(0.9));
+        addSequential(new MoveArmUpTimed(0.600));
     }
 }
