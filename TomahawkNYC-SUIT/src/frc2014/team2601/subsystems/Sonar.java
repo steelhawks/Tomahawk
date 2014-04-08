@@ -19,15 +19,17 @@ public class Sonar extends Subsystem {
     // here. Call these from Commands.
 
     private Ultrasonic wallSonar, ballSonar;
+    //private Ultrasonic wallSonar = new Ultrasonic(Map.LAUNCHER_SONAR_INPUT, Map.LAUNCHER_SONAR_OUTPUT);
+    //private Ultrasonic ballSonar = new Ultrasonic(Map.ARM_SONAR_INPUT, Map.ARM_SONAR_OUTPUT);
     private boolean inRange, hasBall;
-    private double previousBallReading = 0;
+    private double previousBallReading = 0.0, previousWallReading = 0.0;
     
     public Sonar(){
         ballSonar = new Ultrasonic(Map.ARM_SONAR_INPUT, Map.ARM_SONAR_OUTPUT);
-        //ballSonar.setEnabled(true);
-        ballSonar.setAutomaticMode(true);
         wallSonar = new Ultrasonic(Map.LAUNCHER_SONAR_INPUT, Map.LAUNCHER_SONAR_OUTPUT);
-        //wallSonar.setEnabled(true);
+        ballSonar.setEnabled(true);
+        ballSonar.setAutomaticMode(true);
+        wallSonar.setEnabled(true);
         wallSonar.setAutomaticMode(true);
     }
     
@@ -58,6 +60,10 @@ public class Sonar extends Subsystem {
         return previousBallReading;
     }
     
+    public double getPreviousWallReading(){
+        return previousWallReading;
+    }
+    
     public void setInRange(boolean setting){
         inRange = setting;
     }
@@ -68,6 +74,10 @@ public class Sonar extends Subsystem {
     
     public void setPreviousBallReading(double setting){
         previousBallReading = setting;
+    }
+    
+    public void setPreviousWallReading(double setting){
+        previousWallReading = setting;
     }
     
     public void setConfiguration(){

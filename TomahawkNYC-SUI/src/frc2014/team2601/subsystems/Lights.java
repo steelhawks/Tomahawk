@@ -22,11 +22,13 @@ public class Lights extends Subsystem {
     private Relay red, blue;
     private boolean isRed, isBlue;
     private Relay.Value on, off; 
-    private double toggleDelay;
+    private boolean cRed, cPurple;;
     
     public Lights(){
         red = new Relay(Map.RED_LIGHT_RELAY);
         blue = new Relay(Map.BLUE_LIGHT_RELAY);
+        cRed = false;
+        cPurple = true;
         setConfiguration();
         findAllianceColor();
     }
@@ -61,6 +63,8 @@ public class Lights extends Subsystem {
     public void setRed(){
         red.set(on);
         blue.set(off);
+        cRed = true;
+        cPurple = false;
     }
     
     public void setBlue(){
@@ -71,6 +75,18 @@ public class Lights extends Subsystem {
     public void setPurple(){
         red.set(on);
         blue.set(on);
+        cRed = false;
+        cPurple = true;
+    }
+        
+    public void setC(boolean setting){
+        cRed = setting;
+        cPurple = !setting;
+    }
+    
+    public void toggle(){
+        if(cRed) setPurple();
+        else if(cPurple) setRed();
     }
     
     public void setConfiguration(){

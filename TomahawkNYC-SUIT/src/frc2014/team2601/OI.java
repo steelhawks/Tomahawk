@@ -5,11 +5,11 @@ package frc2014.team2601;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc2014.team2601.commands.collecting.AutoIntakeBall;
 import frc2014.team2601.commands.collecting.OpenAndClose;
 import frc2014.team2601.commands.launching.DecreaseDelay;
 import frc2014.team2601.commands.launching.Fire;
 import frc2014.team2601.commands.launching.IncreaseDelay;
+import frc2014.team2601.commands.launching.PassFire;
 import frc2014.team2601.commands.vision.MoveToPosition;
 import frc2014.team2601.commands.vision.TiltDown;
 import frc2014.team2601.commands.vision.TiltReset;
@@ -56,7 +56,7 @@ public class OI {
     private Joystick thrustmaster;
     private final Button fire; //, reset;
     //private final Button variableFire;
-    //private final Button passFire;
+    private final Button passFire;
     private final Button increaseDelay, decreaseDelay;
     
     //Attack 3
@@ -65,13 +65,13 @@ public class OI {
     private final Button resetCamera;
     private final Button setCamera;
     private final Button tiltCameraUp, tiltCameraDown;
-    private final Button autoIntake;
+    //private final Button autoIntake;
     
     public OI(){
         thrustmaster = new Joystick(Map.JOYSTICK_PORT);
         fire = new JoystickButton(thrustmaster, 1);
         //variableFire = new JoystickButton(thrustmaster, 1);
-        //passFire = new JoystickButton(thrustmaster, 3);
+        passFire = new JoystickButton(thrustmaster, 3);
         increaseDelay = new JoystickButton(thrustmaster, 4);
         decreaseDelay = new JoystickButton(thrustmaster, 5);
         //reset = new JoystickButton(thrustmaster, 2);
@@ -82,7 +82,7 @@ public class OI {
         setCamera = new JoystickButton(attack3, 4);
         tiltCameraUp = new JoystickButton(attack3, 3);
         tiltCameraDown = new JoystickButton(attack3, 2);
-        autoIntake = new JoystickButton(attack3, 6);
+        //autoIntake = new JoystickButton(attack3, 6);
         setButtons();
     }
     
@@ -99,7 +99,7 @@ public class OI {
         fire.whenPressed(new Fire());
         //variableFire.whenPressed(new VariableFire());
         //reset.whenPressed(new ResetLauncher());
-        //passFire.whenPressed(new PassFire());
+        passFire.whenPressed(new PassFire());
         increaseDelay.whileHeld(new IncreaseDelay());
         decreaseDelay.whileHeld(new DecreaseDelay());
         
@@ -109,7 +109,7 @@ public class OI {
         resetCamera.whenPressed(new TiltReset());
         tiltCameraUp.whileHeld(new TiltUp());
         tiltCameraDown.whileHeld(new TiltDown());
-        autoIntake.whileHeld(new AutoIntakeBall());
+        //autoIntake.whileHeld(new AutoIntakeBall());
     }
 }
 

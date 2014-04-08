@@ -21,8 +21,11 @@ public class OperateSonar extends CommandBase {
     private double distanceToWall;
              
     //Optimal intake distanceToWall thresholds
-    private double ballCloseThreshold = 5, ballFarThreshold = 10;
+    private double ballCloseThreshold = 3, ballFarThreshold = 19;
     private double distanceToBall;
+    
+    //Simplifying things
+    private boolean isClose, isFar, isLegit;
     
     //For denoising algorithm
 //    private int pings = 0;
@@ -30,7 +33,7 @@ public class OperateSonar extends CommandBase {
 //    private double meanDistanceToWall = 0.0, meanDistanceToBall = 0.0;
 //    private double standardDeviation = 0.0;
 //    private double[] ballReadings = new double[100];
-    private int gap = 20; //Max permissible gap between consecutive readings
+    private int ballGap = 35, wallGap = 60; //Max permissible gap between consecutive readings to eliminate noise
     
     public OperateSonar() {
         // Use requires() here to declare subsystem dependencies
@@ -73,19 +76,30 @@ public class OperateSonar extends CommandBase {
 //        }
 //        standardDeviation = Math.sqrt(standardDeviation);
         
-        //Set flags for optimal shooting distance
-        if((distanceToWall>=lowCloseThreshold && distanceToWall<=lowFarThreshold)
-                || (distanceToWall>=highCloseThreshold && distanceToWall<=highFarThreshold)){
+        //Set flags for optimal shooting distance  
+//        if( ((distanceToWall>=lowCloseThreshold && distanceToWall<=lowFarThreshold)
+//                || (distanceToWall>=highCloseThreshold && distanceToWall<=highFarThreshold))
+//             && ((distanceToWall<sonar.getPreviousWallReading()+wallGap)) || (distanceToWall>sonar.getPreviousWallReading()-wallGap)){
+//            sonar.setInRange(true);
+//        }
+//        else{
+//            sonar.setInRange(false);
+//        }
+        
+        isClose = ((distanceToWall>=lowCloseThreshold) && (distanceToWall<=lowFarThreshold));
+        isFar = ((distanceToWall>=highCloseThreshold) && (distanceToWall<=highFarThreshold));
+        isLegit = ((distanceToWall<sonar.getPreviousWallReading()+wallGap) || (distanceToWall>sonar.getPreviousWallReading()-wallGap));
+        if((isClose||isFar)&&isLegit){
             sonar.setInRange(true);
-        }
+        }  
         else{
             sonar.setInRange(false);
         }
-          
+        
         //Set flags for optimal intake distance
         distanceToBall = sonar.getDistanceFromBall();
         if((distanceToBall>=ballCloseThreshold) && (distanceToBall<=ballFarThreshold)
-                && ((distanceToBall<sonar.getPreviousBallReading()+gap) || (distanceToBall>sonar.getPreviousBallReading()-gap))){
+                && ((distanceToBall<sonar.getPreviousBallReading()+ballGap) || (distanceToBall>sonar.getPreviousBallReading()-ballGap))){
             sonar.setHasBall(true);
         }
         else{
@@ -100,6 +114,7 @@ public class OperateSonar extends CommandBase {
                 
         //Set up filter for next 20ms loop
         sonar.setPreviousBallReading(distanceToBall);
+        sonar.setPreviousWallReading(distanceToWall);
     }
 
     // Make this return true when this Command no longer needs to run execute()

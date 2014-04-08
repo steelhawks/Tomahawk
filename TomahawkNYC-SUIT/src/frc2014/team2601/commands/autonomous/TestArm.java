@@ -3,17 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package frc2014.team2601.commands.collecting;
+package frc2014.team2601.commands.autonomous;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc2014.team2601.commands.collecting.MoveArmUpTimed;
 
 /**
  *
  * @author steelhawks
  */
-public class AutoIntakeBall extends CommandGroup {
+public class TestArm extends CommandGroup {
     
-    public AutoIntakeBall() {
+    public TestArm() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -29,8 +32,10 @@ public class AutoIntakeBall extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-        addSequential(new DetectBall());
-        addSequential(new Close());
-        addSequential(new MoveArmUpTimed(0.500));
+        //ouble delay = 0.300;
+        //SmartDashboard.putNumber("Delay", delay);
+        //SmartDashboard.getNumber("Delay", delay);
+        addSequential(new WaitCommand(5.000));
+        addSequential(new MoveArmUpTimed(0.300));
     }
 }

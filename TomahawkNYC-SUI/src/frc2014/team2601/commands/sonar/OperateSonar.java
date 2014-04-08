@@ -21,7 +21,7 @@ public class OperateSonar extends CommandBase {
     private double distanceToWall;
              
     //Optimal intake distanceToWall thresholds
-    private double ballCloseThreshold = 3, ballFarThreshold = 8;
+    private double ballCloseThreshold = 3, ballFarThreshold = 10;
     private double distanceToBall;
     
     //Simplifying things
@@ -33,7 +33,7 @@ public class OperateSonar extends CommandBase {
 //    private double meanDistanceToWall = 0.0, meanDistanceToBall = 0.0;
 //    private double standardDeviation = 0.0;
 //    private double[] ballReadings = new double[100];
-    private int ballGap = 35, wallGap = 60; //Max permissible gap between consecutive readings to eliminate noise
+    private int ballGap = 20, wallGap = 60; //Max permissible gap between consecutive readings to eliminate noise
     
     public OperateSonar() {
         // Use requires() here to declare subsystem dependencies

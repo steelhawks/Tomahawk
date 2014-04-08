@@ -51,6 +51,15 @@ public class Arms extends Subsystem {
         arm.set(joystick.getY());
     }
     
+    public void operateArm(double value){
+        arm.set(value);
+    }
+    
+    public void pulseArm(){
+        arm.set(0.1);
+        arm.set(-0.1);
+    }
+    
     public void moveArmDown(){
         arm.set(-speed);
     }

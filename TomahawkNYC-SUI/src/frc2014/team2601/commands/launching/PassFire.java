@@ -14,7 +14,7 @@ import frc2014.team2601.commands.CommandBase;
  */
 public class PassFire extends CommandBase {
     
-    private double timeout = 0.280;
+    private double timeout = 0.320;
     private boolean hasDelayed = false;
     
     public PassFire() {

@@ -60,6 +60,7 @@ public class Tomahawk extends IterativeRobot {
 
     public void autonomousInit() {
         autonomousCommand = (Command) autoChooser.getSelected();
+        //new SetLights(true).start();
         CommandBase.vision.target(); //is this the correct angle for autonomous? or should it be commented out?
         CommandBase.vision.turnLightOn();
         autonomousCommand.start();
@@ -78,6 +79,7 @@ public class Tomahawk extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         //autonomousCommand.cancel();
+        //new SetLights(false).start();
     }
 
     /**

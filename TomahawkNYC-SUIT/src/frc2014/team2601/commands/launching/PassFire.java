@@ -14,7 +14,7 @@ import frc2014.team2601.commands.CommandBase;
  */
 public class PassFire extends CommandBase {
     
-    private double timeout = 0.280;
+    private double timeSoFar = 0.0;
     private boolean hasDelayed = false;
     
     public PassFire() {
@@ -30,7 +30,7 @@ public class PassFire extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         launcher.fire();
-        Timer.delay(timeout);
+        timeSoFar += 
         launcher.resetLauncher();
         hasDelayed = true;
     }

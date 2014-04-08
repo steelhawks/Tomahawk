@@ -22,7 +22,7 @@ public class OneBallHotAutonomous extends CommandGroup {
     
     public OneBallHotAutonomous() {
         addSequential(new MoveToPosition());
-        addSequential(new CheckIfHot(4));
+        addSequential(new CheckIfHot(3.75));
         addParallel(new Open());
         addSequential(new DoNothing(1.0));
         addSequential(new Close());

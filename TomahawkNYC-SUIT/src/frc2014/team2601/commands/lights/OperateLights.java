@@ -24,8 +24,8 @@ public class OperateLights extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if(sonar.getInRange()) lights.toggle(System.currentTimeMillis());
-        else lights.setRed();
+        if(sonar.getInRange()) lights.setRed();
+        else lights.setPurple();
         /*
         if(launcher.getFired()){
             lights.setOppositeColor();

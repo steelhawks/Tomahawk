@@ -1,13 +1,12 @@
 package frc2014.team2601;
 
-
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc2014.team2601.commands.collecting.AutoGrabBall;
 import frc2014.team2601.commands.collecting.OpenAndClose;
 import frc2014.team2601.commands.launching.Fire;
+import frc2014.team2601.commands.launching.PassFire;
 import frc2014.team2601.commands.vision.MoveToPosition;
 import frc2014.team2601.commands.vision.TiltDown;
 import frc2014.team2601.commands.vision.TiltReset;
@@ -54,7 +53,7 @@ public class OI {
     private Joystick thrustmaster;
     private final Button fire; //, reset;
     //private final Button variableFire;
-    //private final Button passFire;
+    private final Button passFire;
     //private final Button increaseDelay, decreaseDelay;
     
     //Attack 3
@@ -70,7 +69,7 @@ public class OI {
         thrustmaster = new Joystick(Map.JOYSTICK_PORT);
         fire = new JoystickButton(thrustmaster, 1);
         //variableFire = new JoystickButton(thrustmaster, 1);
-        //passFire = new JoystickButton(thrustmaster, 3);
+        passFire = new JoystickButton(thrustmaster, 3);
         //increaseDelay = new JoystickButton(thrustmaster, 4);
         //decreaseDelay = new JoystickButton(thrustmaster, 5);
         //reset = new JoystickButton(thrustmaster, 2);
@@ -99,7 +98,7 @@ public class OI {
         fire.whenPressed(new Fire());
         //variableFire.whenPressed(new VariableFire());
         //reset.whenPressed(new ResetLauncher());
-        //passFire.whenPressed(new PassFire());
+        passFire.whenPressed(new PassFire());
         //increaseDelay.whileHeld(new IncreaseDelay());
         //decreaseDelay.whileHeld(new DecreaseDelay());
         

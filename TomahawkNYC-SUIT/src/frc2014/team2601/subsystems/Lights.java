@@ -82,8 +82,8 @@ public class Lights extends Subsystem {
     public void setConfiguration(){
         isRed = false;
         isBlue = false;
-        on = Relay.Value.kForward;
-        off = Relay.Value.kOff;
+        off = Relay.Value.kForward;
+        on = Relay.Value.kReverse;
         toggleDelay = 50; //milliseconds
     }
     
