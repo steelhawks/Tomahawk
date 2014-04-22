@@ -6,6 +6,7 @@ Most recent version and working copy is "TomahawkNYC-SUI"
 
 TO DO
 -----
+- [ ] learn how to use git properly
 - [x] Clean up camera control code in TomahawkNYC-S   
 - [x] Clean up Map.java
 - [x] Add delay adjustment for solenoid pulsing for Alpha's shooter 
